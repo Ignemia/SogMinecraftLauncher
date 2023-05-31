@@ -12,9 +12,7 @@ int main( )
 	
 	// Remove existing login file if it exists
 	
-	uint8_t systemType = getSystemName( );
-	
-	std::string filename = (systemType == 1 ? std::getenv( "USERPROFILE" ) : std::getenv( "HOME" )) + std::string( "/documents/.mclauncher/login-info.yaml" );
+	std::string filename = (getSystemName( ) == SYSTEMS::WINDOWS ? std::getenv( "USERPROFILE" ) : std::getenv( "HOME" )) + std::string( "/documents/.mclauncher/login-info.yaml" );
 	
 	// Create new login file
 	createYamlConfigFile( username, password, ip, port );

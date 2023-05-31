@@ -1,1 +1,2 @@
-add_executable(DetermineSystem determinesystem.cpp)
+#target_sources(DetermineSystem PUBLIC determinesystem.cpp)
+add_library(DetermineSystem determinesystem.cpp)
