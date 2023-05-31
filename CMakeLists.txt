@@ -3,5 +3,6 @@ project(MinecraftLauncher)
 
 set(CMAKE_CXX_STANDARD 23)
 
-add_subdirectory(utils)
 add_executable(MinecraftLauncher main.cpp login.cpp login.h config.cpp config.h)
+
+add_subdirectory(utils)
