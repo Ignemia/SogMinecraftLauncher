@@ -1,6 +1,6 @@
 #include <string>
-#include "login.h"
-#include "config.h"
+#include "components/login/login.h"
+#include "components/config/config.h"
 #include "utils/system/determinesystem.h"
 
 int main( )
