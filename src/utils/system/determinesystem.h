@@ -7,10 +7,12 @@
 #include <string>
 #include <sys/utsname.h>
 
-enum SYSTEMS
-{
-	UNKNOWN, WINDOWS, LINUX
-};
-
-uint8_t getSystemName( );
+namespace syslib {
+	enum SYSTEMS
+	{
+		UNKNOWN, WINDOWS, LINUX
+	};
+	
+	uint8_t getSystemName( );
+}
 

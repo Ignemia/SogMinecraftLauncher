@@ -4,21 +4,21 @@
 
 #include "determinesystem.h"
 
-uint8_t getSystemName( )
-{
-	struct utsname info{};
-	if ( uname( &info ) == 0 )
+namespace syslib {
+	uint8_t getSystemName( )
 	{
-		std::string os = info.sysname;
-		if ( os == "Linux" )
+		struct utsname info{};
+		if ( uname( &info ) == 0 )
 		{
-			return SYSTEMS::LINUX;
-		} else if ( os == "Windows" )
-		{
-			return SYSTEMS::WINDOWS;
+			std::string os = info.sysname;
+			if ( os == "Linux" )
+			{
+				return SYSTEMS::LINUX;
+			} else if ( os == "Windows" )
+			{
+				return SYSTEMS::WINDOWS;
+			}
 		}
+		return SYSTEMS::UNKNOWN;
 	}
-	return SYSTEMS::UNKNOWN;
-}
-
-
+};

@@ -2,12 +2,7 @@
  * @file config.h
  * @brief Header file for configuration functions
  */
-
-#include <cstdio>
-#include <cstdlib>
-#include <filesystem>
-#include <fstream>
-#include "../../utils/system/determinesystem.h"
+#include "config.h"
 
 void createYamlConfigFile( const std::string& in_username, const std::string& in_password, const std::string& in_ip, const std::string& in_port )
 {
@@ -16,20 +11,20 @@ void createYamlConfigFile( const std::string& in_username, const std::string& in
 	out << in_ip << ":" << in_port << ":\n" << "  username: " << in_username << "\n" << "  password: " << in_password << "\n";
 	
 	// Get the user's Documents folder path
-	const char* userProfile = (getSystemName( ) == SYSTEMS::WINDOWS ? std::getenv( "USERPROFILE" ) : std::getenv( "HOME" ));
+	const char* userProfile = (syslib::getSystemName( ) == syslib::SYSTEMS::WINDOWS ? std::getenv( "USERPROFILE" ) : std::getenv( "HOME" ));
 	if ( userProfile == nullptr )
 	{
 		std::perror( "Error getting user profile" );
 		return;
 	}
-	std::string documentsPath = std::string( userProfile ) + "\\Documents";
+	std::string documentsPath = std::string( userProfile ) + "/Documents";
 	
 	// Create the .mclauncher directory if it doesn't exist
-	std::string launcherPath = documentsPath + "\\.mclauncher";
+	std::string launcherPath = documentsPath + "/.mclauncher";
 	std::filesystem::create_directories( launcherPath.c_str( ) );
 	
 	// Write the YAML document to a file
-	std::string filePath = launcherPath + "\\login-info.yaml";
+	std::string filePath = launcherPath + "/login-info.yaml";
 	std::ofstream file( filePath );
 	if ( !file.is_open( ) )
 	{
