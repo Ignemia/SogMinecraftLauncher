@@ -7,6 +7,7 @@
 #include <cstdlib>
 #include <filesystem>
 #include <fstream>
+#include "../../utils/system/determinesystem.h"
 
 void createYamlConfigFile( const std::string& in_username, const std::string& in_password, const std::string& in_ip, const std::string& in_port )
 {
@@ -15,7 +16,7 @@ void createYamlConfigFile( const std::string& in_username, const std::string& in
 	out << in_ip << ":" << in_port << ":\n" << "  username: " << in_username << "\n" << "  password: " << in_password << "\n";
 	
 	// Get the user's Documents folder path
-	const char* userProfile = std::getenv( "USERPROFILE" );
+	const char* userProfile = (getSystemName( ) == SYSTEMS::WINDOWS ? std::getenv( "USERPROFILE" ) : std::getenv( "HOME" ));
 	if ( userProfile == nullptr )
 	{
 		std::perror( "Error getting user profile" );

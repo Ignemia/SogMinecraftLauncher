@@ -1,1 +1,2 @@
 add_library(components STATIC login/login.cpp config/config.cpp)
+target_link_libraries(MinecraftLauncher components)
