@@ -1,1 +1,1 @@
-add_library(gui SHARED index.cpp) # checkbox/checkbox.cpp button/button.cpp textbox/textbox.cpp)
+add_library(gui index.cpp) # checkbox/checkbox.cpp button/button.cpp textbox/textbox.cpp)

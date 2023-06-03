@@ -1,2 +1,2 @@
-add_library(SystemLib STATIC system/determinesystem.cpp)
+add_library(SystemLib STATIC system/determinesystem.cpp actionlistener/actionlistener.h)
 target_link_libraries(MinecraftLauncher SystemLib)

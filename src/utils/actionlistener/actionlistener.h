@@ -1,0 +1,13 @@
+//
+// Created by Andrea on 6/2/2023.
+//
+
+#ifndef MINECRAFTLAUNCHER_ACTIONLISTENER_H
+#define MINECRAFTLAUNCHER_ACTIONLISTENER_H
+
+class actionlistener
+{
+
+};
+
+#endif //MINECRAFTLAUNCHER_ACTIONLISTENER_H
