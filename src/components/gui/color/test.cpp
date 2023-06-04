@@ -16,19 +16,46 @@ TEST(Color, Constructor)
     EXPECT_EQ(c2.m_getA(), 128);
 }
 
+TEST(ColorTest, c_toHex)
+{
+    gui::Color white(255, 255, 255, 255);
+    gui::Color black(0, 0, 0, 255);
+    gui::Color red(255, 0, 0, 255);
+    gui::Color green(0, 255, 0, 255);
+    gui::Color blue(0, 0, 255, 255);
+    gui::Color transparent(0, 0, 0, 0);
+
+    // Test with alpha component
+    EXPECT_EQ("#FFFFFFFF", white.c_toHex(true));
+    EXPECT_EQ("#000000FF", black.c_toHex(true));
+    EXPECT_EQ("#FF0000FF", red.c_toHex(true));
+    EXPECT_EQ("#00FF00FF", green.c_toHex(true));
+    EXPECT_EQ("#0000FFFF", blue.c_toHex(true));
+    EXPECT_EQ("#00000000", transparent.c_toHex(true));
+
+    // Test without alpha component
+    EXPECT_EQ("#FFFFFF", white.c_toHex(false));
+    EXPECT_EQ("#000000", black.c_toHex(false));
+    EXPECT_EQ("#FF0000", red.c_toHex(false));
+    EXPECT_EQ("#00FF00", green.c_toHex(false));
+    EXPECT_EQ("#0000FF", blue.c_toHex(false));
+    EXPECT_EQ("#000000", transparent.c_toHex(false));
+}
+
+
 TEST(Color, Normalize)
 {
     EXPECT_FLOAT_EQ(gui::Color::c_normalize(0), 0);
     EXPECT_FLOAT_EQ(gui::Color::c_normalize(255), 1);
-    EXPECT_FLOAT_EQ(gui::Color::c_normalize(128), 0.50196078431);
+    EXPECT_FLOAT_EQ(gui::Color::c_normalize(128), 128.f/255.f);
 }
 
-// TEST(Color, Denormalize)
-// {
-//     EXPECT_EQ(gui::Color::c_denormalize(0), 0);
-//     EXPECT_EQ(gui::Color::c_denormalize(1), 255);
-//     EXPECT_EQ(gui::Color::c_denormalize(0.50196078431), 128);
-// }
+TEST(Color, Denormalize)
+{
+    EXPECT_EQ(gui::Color::c_denormalize(0), 0);
+    EXPECT_EQ(gui::Color::c_denormalize(1), 255);
+    EXPECT_EQ(gui::Color::c_denormalize(128.f/255.f), 128);
+}
 
 TEST(Color, GetString)
 {

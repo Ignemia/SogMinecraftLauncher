@@ -30,6 +30,14 @@ namespace gui
         Color(uint8_t r = 0, uint8_t g = 0, uint8_t b = 0, uint8_t a = 255);
 
         /**
+         * @brief This function takes one optional input parameter "include_alpha" which has a default value of "true". The purpose of the function is to convert a given value to its hexadecimal representation.
+         *
+         * @param include_alpha A boolean input parameter which specifies if the output string should include alphabetic characters.
+         * @return std::string The hexadecimal representation of the color.
+         */
+        std::string c_toHex(bool include_alpha);
+        
+        /**
          * @brief Converts 8-bit color value to floating point value between 0-1.
          *
          * @param in 8-bit color value
@@ -38,20 +46,12 @@ namespace gui
         float static c_normalize(uint8_t in);
 
         /**
-         * @brief This function takes one optional input parameter "include_alpha" which has a default value of "true". The purpose of the function is to convert a given value to its hexadecimal representation.
-         *
-         * @param include_alpha A boolean input parameter which specifies if the output string should include alphabetic characters.
-         * @return std::string The hexadecimal representation of the color.
-         */
-        std::string c_toHex(bool include_alpha);
-
-        /**
          * @brief Converts floating point value between 0-1 to 8-bit color value.
          *
          * @param in Floating point value between 0-1
          * @return uint8_t 8-bit color value
          */
-        uint8_t c_denormalize(float in);
+        uint8_t static c_denormalize(float in);
 
         /**
          * @brief Get a string representation of the color in RGBA format.
