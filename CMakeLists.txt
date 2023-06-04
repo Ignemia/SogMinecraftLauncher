@@ -17,4 +17,6 @@ endif()
 set(LIBRARY_OUTPUT_PATH ${CMAKE_BINARY_DIR})
 add_subdirectory(src)
 
+set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
+
 target_link_libraries(MinecraftLauncher sfml-graphics sfml-network)

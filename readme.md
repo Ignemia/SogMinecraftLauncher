@@ -19,7 +19,7 @@ For correctly building the application in docker VcXsrv has to be installed in *
 Then you can run the Dockerfile with command:  
 ```batchfile
 docker build -t ubuntu:20.04 . 
-docker run -v /tmp/.X11-unix:/tmp/.X11-unix -v ~\.XAuthority:/root/.Xauthority --name MinecraftLauncherContainer --privileged false ubuntu:20.04
+docker run -v /tmp/.X11-unix:/tmp/.X11-unix -v ~\.XAuthority:/root/.Xauthority --name MinecraftLauncherContainer ubuntu:20.04
 ```
 
 Or you can start it using docker-compose
