@@ -13,10 +13,16 @@ if(${CMAKE_SOURCE_DIR} STREQUAL ${CMAKE_BINARY_DIR})
     message(FATAL_ERROR "In-source builds are not allowed.")
 endif()
 
-
 set(LIBRARY_OUTPUT_PATH ${CMAKE_BINARY_DIR})
+
+if(UNIX)
+    set(EXECUTABLE_NAME MinecraftLauncher)
+else(WIN32)
+    set(EXECUTABLE_NAME MinecraftLauncher.exe)
+endif()
+
 add_subdirectory(src)
 
 set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
 
-target_link_libraries(MinecraftLauncher sfml-graphics sfml-network)
+target_link_libraries(${EXECUTABLE_NAME} sfml-graphics sfml-network)
