@@ -1,0 +1,10 @@
+version: "3"
+services:
+  app:
+    container_name: MinecraftLauncherContainer
+    image: ubuntu:20.04
+    build: .
+    volumes:
+      - /tmp/.X11-unix:/tmp/.X11-unix
+      - /.XAuthority:/root/.Xauthority
+    network_mode: host
